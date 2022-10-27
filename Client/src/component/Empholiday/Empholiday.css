@@ -1,0 +1,92 @@
+.home-page{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80vh;
+    overflow-y: scroll;
+    gap:30px;
+    align-items: center;
+}
+
+.list-items{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+.emph{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    text-align: center;
+    align-items: center;
+    width: 95%;
+    justify-content: space-around;
+}
+.tbl,.tbl thead tr th,.tbl tbody tr td{
+    border:none;
+}
+.tbl{
+    border: #440263 2px solid;  
+    width:50%;
+    /* overflow-y: auto; */
+    border-collapse: collapse; 
+}
+
+.tbl tbody tr,.tbl thead tr{
+    border-bottom: 2px solid #440263;
+    height: 50px;
+}
+.tbl thead tr{
+    height:50px;
+}
+.tbl thead tr th{
+    color: white;
+    font-size: medium;
+    background:  #440263;
+}
+.tbl caption{
+    color: #440263;
+    padding: 10px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+
+.head{
+    color: #440263;
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid #440263;
+
+}
+
+.card{
+    width: 47%;
+}
+
+.card-list{
+    width: 95%;
+    border: #440263 2px solid;   
+    margin: 10px;
+    padding: 0;
+}
+
+.card-list li{
+    text-align: left;
+    padding: 7px;
+    margin: 7px;
+    border-bottom: 2px solid #440263;
+
+}
+
+.card-list li:last-child{
+    border-bottom: none;
+}
+
+
+
