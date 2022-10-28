@@ -1,23 +1,19 @@
-import express from "express";
-// const express = require("express");
-import cors from "cors";
-import mongoose from "mongoose";
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
 
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(cors());
+const app = express()
+app.use(express.json())
+app.use(express.urlencoded())
+app.use(cors())
 
+mongoose.connect("mongodb://localhost:27017/myLoginRegisterDB", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, () => {
+    console.log("DB connected")
+})
 
-mongoose.connect("mongodb://localhost:27017/auth",{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-});()=>{
-    console.log("connected to DB")
-}
-
-
-//user schema 
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
@@ -26,42 +22,45 @@ const userSchema = new mongoose.Schema({
 
 const User = new mongoose.model("User", userSchema)
 
-//routes routes
-app.post("/Login",(req,res)=>{
-    const {email,password} =req.body;
-    User.findone({email:email},(err,user)=>{
+//Routes
+app.post("/login", (req, res)=> {
+    const { email, password} = req.body
+    User.findOne({ email: email}, (err, user) => {
         if(user){
-           if(password === user.password){
-               res.send({message:"login sucess",user:user})
-           }else{
-               res.send({message:"wrong credentials"})
-           }
-        }else{
-            res.send("not register")
+            if(password === user.password ) {
+                res.send({message: "Login Successfull", user: user})
+            } else {
+                res.send({ message: "Password didn't match"})
+            }
+        } else {
+            res.send({message: "User not registered"})
         }
     })
-});
-app.post("/Register",(req,res)=>{
-    console.log(req.body) 
-    const {name,email,password} =req.body;
-    User.findOne({email:email},(err,user)=>{
+}) 
+
+app.post("/register", (req, res)=> {
+    const { name, email, password} = req.body
+    User.findOne({email: email}, (err, user) => {
         if(user){
-            res.send({message:"user already exist"})
-        }else {
-            const user = new User({name,email,password})
-            user.save(err=>{
-                if(err){
+            res.send({message: "User already registerd"})
+        } else {
+            const user = new User({
+                name,
+                email,
+                password
+            })
+            user.save(err => {
+                if(err) {
                     res.send(err)
-                }else{
-                    res.send({message:"sucessfull"})
+                } else {
+                    res.send( { message: "Successfully Registered, Please login now." })
                 }
             })
         }
     })
-   
-
+    
 }) 
 
-app.listen(6969,()=>{
-    console.log("started")
+app.listen(9002,() => {
+    console.log("BE started at port 9002")
 })

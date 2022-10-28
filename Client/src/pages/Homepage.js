@@ -1,10 +1,12 @@
-import React from 'react'
+import React from "react"
+import "./Homepage.css"
 
-const Homepage = () => {
+const Homepage = ({setLoginUser}) => {
     return (
-        <>
-            <h1>Welcome to Homepage which is only visible when you are logged in </h1>
-        </>
+        <div className="homepage">
+            <h1>Hello Homepage</h1>
+            <div className="button" onClick={() => setLoginUser({})} >Logout</div>
+        </div>
     )
 }
 

@@ -1,14 +1,28 @@
-import React from "react";
-import Routes from "./route";
-import { AuthProvider } from "./AuthContext";
-
-
+import './App.css'
+import Homepage from "./pages/Homepage"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from 'react';
 
 function App() {
+
+  const [ user, setLoginUser] = useState({})
   return (
-    <AuthProvider>
-     <Routes/> 
-    </AuthProvider>
+    <div className="App">
+      <Router>
+        <Routes>
+          
+          <Route path="/" element={
+              user && user._id ? <Homepage setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>
+            } />
+
+          <Route path="/login" element={<Login setLoginUser={setLoginUser}/>} />
+          <Route path="/register" element={<Register/>} />
+
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
