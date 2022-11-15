@@ -2,6 +2,7 @@ import './App.css'
 import Homepage from "./pages/Homepage"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import Create from "./Create"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
 
@@ -19,6 +20,7 @@ function App() {
 
           <Route path="/login" element={<Login setLoginUser={setLoginUser}/>} />
           <Route path="/register" element={<Register/>} />
+          <Route path="/create" element={<Create/>} />
 
         </Routes>
       </Router>
