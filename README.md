@@ -1,5 +1,5 @@
 # leave-management-system
-
+```
 add these in .env under Server folder
 EMAIL_AUTH_USER 
 EMAIL_AUTH_PASSWORD 
@@ -10,3 +10,4 @@ REFRESH_TOKEN_EXPIRY
 MONGO_DB_CONNECTION_STRING 
 COOKIE_SECRET 
 WHITELISTED_DOMAINS 
+```
